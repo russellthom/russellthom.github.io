@@ -1,0 +1,7 @@
+<!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Tesla Callback</title>
+<style>body{font-family:system-ui;text-align:center;padding:2em}#c{font-size:1.6em;word-break:break-all;font-family:monospace;background:#eee;padding:1em;border-radius:8px}button{font-size:1.3em;padding:.6em 1.4em;margin-top:1em}</style></head>
+<body><h1>Tesla authorization code</h1><div id="c"></div><button id="b">Copy code</button><p id="s"></p>
+<script>const p=new URLSearchParams(location.search);const c=p.get('code');const e=p.get('error');
+document.getElementById('c').textContent=c||(e?('Error: '+e+' '+(p.get('error_description')||'')):'No code in URL');
+if(p.get('state'))document.getElementById('s').textContent='state: '+p.get('state');
+document.getElementById('b').onclick=()=>navigator.clipboard.writeText(c||'').then(()=>{document.getElementById('b').textContent='Copied!'});</script></body></html>
